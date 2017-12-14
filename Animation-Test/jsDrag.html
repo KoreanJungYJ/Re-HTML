@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            div{
+                width:10rem;
+                height:10rem;
+                border:1px solid gray;
+            }
+            img{
+                width:128px;
+                height:128px;
+                padding-top:1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "div1" ondrop = "drop(event)" ondragover="allowDrop(event)"></div>
+        
+        <img id = "img1" src= "tiles-view.png" draggable="true" ondragstart="drag(event)">
+        
+        <script type = "text/javascript">
+            function allowDrop(e){
+                e.preventDefault();
+            }
+            
+            function drag(e){
+                e.dataTransfer.setData("text", e.target.id);
+            }
+            
+            function drop(e){
+                e.preventDefault();
+                let data = e.dataTransfer.getData("text");
+                e.target.appendChild(document.getElementById(data));
+            }
+        </script>
+    </body>
+</html>

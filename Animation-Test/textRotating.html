@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Text-Rotating</title>
+        <meta charset="utf-8">
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+            
+            p{
+                font-size:1.4rem;
+                text-align: center;
+                margin-top:10rem;
+            }
+        </style>
+    </head>
+    <body>
+        <p></p>
+        <script type= "text/javascript">
+            let message = "텍스트는 적히는 맛입니다.";
+            let cnt = 0, messageCnt = 0;
+            
+            function rotating(){
+                let p = document.querySelector('p');
+                p.innerText = message.substring(0, cnt++);
+                
+                if(cnt >= message.length){
+                    cnt = 0;
+                    messageCnt++;
+                    
+                    if(messageCnt >= message.length){
+                        messageCnt = 0;
+                    }
+                }
+                
+                setTimeout(rotating, 300);
+            }
+            
+            window.onload = function(){
+                rotating();
+            }
+        </script>
+    </body>
+</html>
